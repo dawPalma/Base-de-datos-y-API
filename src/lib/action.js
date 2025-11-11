@@ -48,6 +48,40 @@ export async function eliminarProductoDB(formData) {
 }
 
 
+export async function nuevoClienteDB(formData) {
+    const nombre = formData.get('nombre')
+    const email = formData.get('email')
+    const telefono = formData.get('telefono')
+
+    const sql = 'insert into `clientes` (`nombre`, `email`, `telefono`) values (?, ?, ?)'
+    const values = [nombre, email, telefono];
+
+    await db.query(sql, values)
+    revalidatePath('/clientes-db')
+}
+
+
+export async function editarClienteDB(formData) {
+    const id = formData.get('id')
+    const nombre = formData.get('nombre')
+    const email = formData.get('email')
+    const telefono = formData.get('telefono')
+
+    const sql = 'update clientes set nombre=?, email=?, telefono=? where id=?'
+    const values = [nombre, email, telefono, id];
+
+    await db.query(sql, values)
+    revalidatePath('/clientes-db')
+}
+
+
+export async function eliminarClienteDB(formData) {
+    const id = formData.get('id')
+    const sql = 'delete from clientes where id = ?'
+    const values = [id]
+    await db.query(sql, values);
+    revalidatePath('/clientes-db')
+}
 
 
 
@@ -84,4 +118,33 @@ export async function eliminarProductoAPI(formData) {
     await fetch('http://localhost:3001/productos/' + id, { method: 'DELETE' })
 
     revalidatePath('/productos-api')
+}
+
+
+export async function nuevoClienteAPI(formData) {
+    const [nombre, email, telefono] = formData.values()
+
+    await fetch('http://localhost:3001/clientes', {
+        method: 'POST',
+        body: JSON.stringify({ nombre, email, telefono, createdAt: new Date().toISOString() })
+    })
+    revalidatePath('/clientes-api')
+}
+
+
+export async function editarClienteAPI(formData) {
+    const [id, nombre, email, telefono] = formData.values()
+
+    await fetch('http://localhost:3001/clientes/' + id, {
+        method: 'PUT',
+        body: JSON.stringify({ nombre, email, telefono, createdAt: new Date().toISOString() })
+    })
+    revalidatePath('/clientes-api')
+}
+
+
+export async function eliminarClienteAPI(formData) {
+    const id = formData.get('id')
+    await fetch('http://localhost:3001/clientes/' + id, { method: 'DELETE' })
+    revalidatePath('/clientes-api')
 }
