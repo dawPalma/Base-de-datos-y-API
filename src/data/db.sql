@@ -13,6 +13,15 @@ CREATE TABLE productos (
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE clientes (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    telefono VARCHAR(20),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
 -- ALTER TABLE productos ADD COLUMN imagen VARCHAR(200) AFTER descripcion;
 
 INSERT INTO productos (nombre, descripcion, precio) 
@@ -20,3 +29,9 @@ VALUES
   ('Monitor 17 pulgadas', 'Monitor plano LCD', 110.22),
   ('Teclado', 'Teclado USB en español', 20.12),
   ('Impresora', 'Impresora láser a color', 360.05);
+
+INSERT INTO clientes (nombre, email, telefono)
+VALUES
+  ('Juan Pérez', 'juan.perez@example.com', '123-456-7890'),
+  ('Ana López', 'ana.lopez@example.com', '098-765-4321'),
+  ('Carlos García', 'carlos.garcia@example.com', '555-555-5555');

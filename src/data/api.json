@@ -21,5 +21,28 @@
       "precio": 44.99,
       "createdAt": "2025-11-06T12:50:07.914Z"
     }
+  ],
+  "clientes": [
+    {
+      "id": "1",
+      "nombre": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "telefono": "123-456-7890",
+      "createdAt": "2024-10-23T10:56:35.101Z"
+    },
+    {
+      "id": "2",
+      "nombre": "Ana López",
+      "email": "ana.lopez@example.com",
+      "telefono": "098-765-4321",
+      "createdAt": "2025-11-06T12:22:34.096Z"
+    },
+    {
+      "id": "3",
+      "nombre": "Carlos García",
+      "email": "carlos.garcia@example.com",
+      "telefono": "555-555-5555",
+      "createdAt": "2025-11-06T12:50:07.914Z"
+    }
   ]
 }
