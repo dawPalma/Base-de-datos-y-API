@@ -16,7 +16,4 @@ Hacen uso de **`params`** para mostrar un producto.
 - `productos-db/[id]`
 - `productos-api/[id]`
 
-
-## Construcción del proyecto
-
-![Build](public/build.png)
+ACTIVIDAD 4.1. Contenido dinámico: Base de datos y API.
